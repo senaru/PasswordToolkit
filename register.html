@@ -2,6 +2,7 @@
 
 <html lang="en">
   <head>
+      <title>PasswordToolKit - Register</title>
     <meta charset="utf-8">
 	<!-- Js-->
   <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script> 
@@ -20,7 +21,7 @@
 	
   <body>
       <form>
-      <h1 class="header">PasswordManager</h1>
+      <h1 class="header">PasswordToolKit</h1>
       <h2 class="fab fa-keycdn"></h2>
       <br>
 
@@ -40,6 +41,9 @@
     <input type="password" class="form-control" id="confirmationpassword" placeholder="Confirm Password" pattern=".*" required>
                 </span>
 	<button id="reg" class="button" type="button" onclick="registerButton()" >Register</button>
+          
+          <p>Already a User?</p>
+        <a id="login" class="gradient" onclick="loginLink()">LogIn</a>
 
       </form>
 	<script>
@@ -48,6 +52,10 @@
 		var password;
 		var personalname;
 		var poolData;
+        
+        function loginLink() {
+        window.open("file:register.html")
+    }
 			
 	  function registerButton() {
 		

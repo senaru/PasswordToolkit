@@ -2,6 +2,7 @@
 
 <html lang="en">
   <head>
+      <title>PasswordToolKit - LogIn</title>
     <meta charset="utf-8">
 
 	<!-- JS-->
@@ -19,7 +20,7 @@
   </head>
   <body>
     <form>
-      <h1 class="header">PasswordManager</h1>
+      <h1 class="header">PasswordToolKit</h1>
       <h2 class="fab fa-keycdn"></h2>
       <br>
       
@@ -40,7 +41,7 @@
         <br>
       <br>
       <p>Not a Member?</p>
-        <a id="signup" class="gradient" onclick="registerButton()">Sign up!</a>
+        <a id="signup" class="gradient" onclick="registerLink()">Sign up!</a>
     </form>
 
 
@@ -73,7 +74,7 @@
         onSuccess: function (result) {
 			var accessToken = result.getAccessToken().getJwtToken();
 			console.log(accessToken);	
-			window.open("file:main.html");
+			window.location.href = "file:main.html";
         },
 
         onFailure: function(err) {
@@ -82,7 +83,7 @@
     });
   }
     
-    function registerButton() {
+    function registerLink() {
         window.open("file:register.html")
     }
   

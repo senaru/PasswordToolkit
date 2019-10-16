@@ -1,5 +1,5 @@
 /* Active Gradient */
-#introduction,#tabs-list,body,header,html{
+body,html{
     margin:0;
     width:100%;
     font-family:Exo,sans-serif;
@@ -8,6 +8,7 @@
     background-size:400% 400%;
     animation:gradientBG 15s ease infinite
 }
+
 @keyframes gradientBG{
     0%{
         background-position:0 50%
@@ -332,7 +333,8 @@ label.panel-label:hover{
     }
     ul#tabs-list{
         text-align:center;
-        border-bottom:1px solid #dfdfdf
+        border-bottom:1px solid #dfdfdf;
+        background-color:transparent !important;
     }
     ul#tabs-list li{
         display:inline-block;
@@ -421,15 +423,27 @@ body{
     font-family:"Open Sans","Helvetica Neue",Helvetica,sans-serif
 }
 #introduction{
-    width:90%;
+    text-align:center;
+    width:100vw;
     margin:0 auto;
     padding:48px 24px;
     color:#fff;
-    background-color:transparent
+    background-color:transparent;
 }
 #introduction h1{
+    font-size:5vw;
     font-weight:300;
-    text-align:center;
+    background-color:transparent
+}
+#introduction h2{
+    font-size:1.8vw;
+    font-weight:300;
+    background-color:transparent
+}
+#introduction a{
+    color:#dfdfdf;
+    font-size:1vw;
+    font-weight:300;
     background-color:transparent
 }
 main h1{
@@ -496,4 +510,9 @@ comp{
   color:red;
   font-size: 30px;
   font-family: 'Press Start 2P', cursive;
+}
+
+#headertext {
+    padding: 0 0 0 1vw;
+  display: inline-flex;
 }

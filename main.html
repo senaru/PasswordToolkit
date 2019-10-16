@@ -2,6 +2,11 @@
 <html lang='en'>
 
 <head>
+    <title>PasswordToolKit</title>
+<!--Cognito Script-->
+    <script src="js/amazon-cognito-identity.min.js"></script>  
+	<script src="js/config.js"></script>
+    
 <!--CSS-->
     <link id='stylecss' type="text/css" rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
@@ -30,7 +35,17 @@
        class="panel-radios" type="checkbox" name="nav-checkbox">
 
 <header id="introduction">
-  <h1>PasswordManager</h1>
+  <h1>PasswordToolKit</h1>
+  <span id="headertext">
+  <h2>Hello, </h2>
+      <span id="headertext">
+  <h2 id="email_value"> </h2>
+      </span>
+  </span>
+    <sub>
+    <a id='logout' onclick="signOut()">LogOut</a>
+        </sub>
+    
 </header>
 
 <!-- TABS LIST -->
