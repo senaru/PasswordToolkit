@@ -109,7 +109,7 @@
 <!--AI PW STRENGTH-->
     <section id="strengthPanel">
       <main>
-        <div ng-controller="Tester" class="app">
+        <div ng-controller="Tester" class="tester">
   
   <h1 class="header">Enter Password</h1>
   <br>
@@ -123,7 +123,7 @@
 </div>
           <button ng-click="clr()">Clear</button>
     
-<!--     Score -->
+<!--Score -->
             <div ng-if="re.score != null">
     <h1>Score: {{re.score}}</h1>
   
@@ -151,7 +151,7 @@
 <!--     feedback -->
   <div ng-if="re.feedback.warning.length > 0">
     <h1>Feedback </h1>
-     <p> <span class="bg-warning">{{re.feedback.warning}}</span></p>
+     <p>{{re.feedback.warning}}</p>
   </div>
     
 <!--     suggestions -->
@@ -186,7 +186,131 @@
     <section id="generatorPanel">
       <main>
         <h1>Generate Secure Password</h1>
-        <p>something something</p>
+        <div class="generator-container">
+
+	<form action="#" id="app" class="app" autocomplete="off" accept-charset="utf-8">
+		<div class="row number-characters">
+			<div class="col">
+				<label for="number-characters">
+					Number of Characters
+				</label>
+			</div>
+
+			<div class="col buttons">
+				<div>
+					<button id="btn-minus-one" class="btn">
+						<i class="fa fa-minus"></i>
+					</button>
+				</div>
+
+				<div>
+					<input type="text" id="number-characters" readonly="readonly" value="5">
+				</div>
+
+				<div>
+					<button id="btn-plus-one" class="btn">
+						<i class="fa fa-plus"></i>
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col">
+				<label for="lowercase">
+					Include lowercase?
+				</label>
+			</div>
+
+			<div class="col">
+				<button id="btn-lowercase" class="btn disabled">
+					<i class="fa fa-check"></i>
+				</button>
+			</div>
+		</div>
+
+		<div class="row uppercase">
+			<div class="col">
+				<label for="uppercase">
+					Include UPPERCASE?
+				</label>
+			</div>
+
+			<div class="col">
+				<button id="btn-uppercase" class="btn false">
+					<i class="fa fa-times"></i>
+				</button>
+			</div>
+		</div>
+
+		<div class="row numbers">
+			<div class="col">
+				<label for="numbers">
+					Include Numbers?
+				</label>
+			</div>
+
+			<div class="col">
+				<button id="btn-numbers" class="btn false">
+					<i class="fa fa-times"></i>
+				</button>
+			</div>
+		</div>
+
+		<div class="row symbols">
+			<div class="col">
+				<label for="symbols">
+					Include Symbols?
+				</label>
+			</div>
+
+			<div class="col">
+				<button id="btn-symbols" class="btn false">
+					<i class="fa fa-times"></i>
+				</button>
+			</div>
+		</div>
+
+		<div class="row uppercase">
+			<div class="col">
+				<label for="uppercase">
+					Include Emojis?
+				</label>
+			</div>
+
+			<div class="col">
+				<button id="btn-emojis" class="btn false">
+					<i class="fa fa-times"></i>
+				</button>
+			</div>
+		</div>
+
+		<div class="row generate">
+			<div class="col">
+				<button id="btn-generate" class="btn btn-generate">
+					Generate
+					<i class="fa fa-lock"></i>
+				</button>
+			</div>
+
+			<div class="col">
+				<input type="text" id="input-password" class="input-password" readonly="readonly">
+			</div>
+		</div>
+
+		<div class="row alert">
+			<div class="col">
+				<div id="alert-copy" class="alert-copy">
+					<p>
+						<i class="fa fa-copy"></i>
+						Copied to Clipboard
+					</p>
+				</div>
+			</div>
+		</div>
+
+	</form>
+</div>
       </main>
     </section>
     

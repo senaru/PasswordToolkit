@@ -491,7 +491,6 @@ red {
    pointer-events: all;
  }
 
-/* Styles for CodePen Demo Only */
 #wrapper {
   max-width:220px;
   margin: auto;
@@ -516,3 +515,250 @@ comp{
     padding: 0 0 0 1vw;
   display: inline-flex;
 }
+
+/* Password Generator */
+.generator-container {
+	margin: 40px auto;
+	max-width: 500px;
+	width: 90%;
+}
+
+/* Logo */
+.logo {
+	margin-bottom: 40px;
+	text-align: center;
+	width: 100%;
+}
+
+.logo h1 {
+	font: normal 4.5em 'Shrikhand', sans-serif;
+}
+
+.logo p {
+	font-size: 1.5em;
+}
+
+/* Rows and Columns */
+.app .row {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	margin-bottom: 40px;
+}
+
+.app .col {
+	width: 50%;
+}
+
+/* Inputs and Buttons */
+.app label {
+    color:#546e7a;
+	font-size: 18px;
+	line-height: 40px;
+}
+
+.app input {
+	border-style: none;
+	text-align: center;
+}
+
+.app .btn {
+	background-color: #00C9A7;
+	border-radius: 4px;
+	border-style: none;
+	box-shadow: 1px 1px 5px #130f25;
+	color: #ffffff;
+	cursor: pointer;
+	display: inline-block;
+	font-size: 16px;
+	height: 40px;
+	text-align: center;
+	transition: 0.3s ease all;
+	vertical-align: top;
+	width: 100%;
+}
+
+.app .btn.disabled {
+	background-color: rgba(255, 255, 255, 0.9);
+	color: #00FA9A;
+}
+
+.app .btn.disabled:hover,
+.app .btn.disabled:focus,
+.app .btn.disabled:active {
+	background-color: rgba(255, 255, 255, 0.9);
+	transform: scale(1);
+}
+
+.app .btn.false {
+	background-color: #00FA9A;
+}
+
+.app .number-characters .buttons div {
+	width: 100%;
+}
+
+.app .number-characters .buttons div:nth-child(1) button {
+	border-radius: 4px 0 0 4px;
+}
+
+.app .number-characters input {
+	background-color: #00FA9A;
+	box-shadow: 0 0 50px #666 inset;
+	color: #ffffff;
+	cursor: default;
+	font: bold 20px 'Sofadi One', sans-serif;
+	height: 40px;
+	width: 100%;
+}
+
+.app .number-characters .buttons div:nth-child(3) button {
+	border-radius: 0 4px 4px 0;
+}
+
+.app .number-characters .buttons {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.app .row.generate {
+	margin-bottom: 10px;
+}
+
+.app .row.generate .col:nth-child(1) {
+	width: 30%;
+}
+
+.app .row.generate .col:nth-child(2) {
+	width: 65%;
+}
+
+.app .row.generate .btn-generate:before {
+	background-color: #684bff;
+	bottom: calc(40px - 28px);
+	content: '';
+	display: inline-block;
+	height: 14px;
+	left: 95%;
+	position: absolute;
+	transform: rotateZ(45deg);
+	transition: 0.3s ease all;
+	width: 14px;
+	z-index: -1;
+}
+
+.app .btn:active {
+	transform: scale(0.9);
+}
+
+.app .row.generate .btn-generate {
+	box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+	font: normal 19px 'Sofadi One', sans-serif;
+	height: 40px;
+	line-height: 40px;
+	position: relative;
+	width: 100%;
+}
+
+.app .btn:hover,
+.app .btn:focus,
+.app .row.generate .btn-generate:hover:before,
+.app .row.generate .btn-generate:focus:before {
+	background-color: #8b79e5;
+}
+
+.app .row.generate .btn-generate i {
+	bottom: 1px;
+	font-size: 14px;
+	margin-left: 20px;
+	position: relative;
+}
+
+.app .row.generate .input-password::selection {
+	background-color: #907bff;
+}
+
+.app .row.generate .input-password::-moz-selection {
+	background-color: #907bff;
+}
+
+.app .row.generate .input-password {
+	background-color: rgba(0, 0, 0, 0);
+	border-radius: 4px;
+	border: 1px solid rgba(0, 0, 0, 0.25);
+	cursor: pointer;
+/* 	font: bold 1em 'Montserrat', sans-serif; */
+	height: 40px;
+	letter-spacing: 2px;
+	line-height: 40px;
+	transition: 0.3s ease all;
+	width: 100%;
+}
+
+.app .row.generate .input-password:hover,
+.app .row.generate .input-password:focus {
+	border: 1px solid rgba(169, 169, 169, 0.5);
+}
+
+.app .row.generate .input-password.small {
+	font-size: 11px;
+}
+
+.app .row.alert {
+	justify-content: flex-end;
+}
+
+.app .row.alert .col {
+	width: 65%;
+}
+
+.app .row.alert .alert-copy {
+	opacity: 0;
+	text-align: center;
+	transition: 0.3s ease all;
+}
+
+.app .row.alert .alert-copy.active {
+	opacity: 1;
+}
+
+.app .row.alert .alert-copy p,
+.app .row.alert .alert-copy i {
+	font-size: 12px;
+}
+
+@media screen and (max-width: 500px) {
+	.logo h1 {
+		font-size: 2.5em;
+	}
+
+	.app .row {
+		flex-direction: column;
+		margin-bottom: 20px;
+	}
+
+	.app .row .col {
+		margin-bottom: 20px;
+		width: 100%;
+	}
+
+	.app .row.generate {
+		border-top: 1px solid rgba(0, 0, 0, 0.25);
+		padding-top: 40px;
+	}
+
+	.app .row.generate .col:nth-child(1), 
+	.app .row.generate .col:nth-child(2),
+	.app .row.alert .col {
+		width: 100%;
+	}
+
+	.app .row.generate .btn-generate:before {
+		bottom: calc(100% - 42px);
+		left: calc(50% - 14px);
+		right: calc(50% - 14px);
+		top: auto;
+	}
+}
+
