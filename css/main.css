@@ -443,3 +443,24 @@ main h1{
 main p{
     line-height:1.8
 }
+
+/* Alignment in Panels */
+#strengthPanel{
+  text-align:center;
+}
+
+#generatorPanel{
+  text-align:center;
+}
+
+#managePanel{
+  text-align:center;
+}
+
+#breachPanel{
+  text-align:center;
+}
+
+#aboutPanel{
+  text-align:center;
+}

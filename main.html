@@ -5,6 +5,7 @@
 <!--CSS-->
     <link id='stylecss' type="text/css" rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    
 </head>
     <body>
 <!-- TAB CONTROLLERS -->
@@ -73,10 +74,66 @@
 <!--AI PW STRENGTH-->
     <section id="strengthPanel">
       <main>
+        <div ng-controller="Tester" class="app">
+  
+  <h1 class="header">Enter Password</h1>
+  <br>
+  
+  <input type="password" ng-change="checkPd()" ng-model="pwd" /> <button ng-click="clr()">Clear</button>
+    
+<!--     Score -->
+    <h2>Score: {{re.score}}</h2>
+  
+  <div ng-if="re.score == 0">
+    <p>Worst</p>
+</div>
+  
+  <div ng-if="re.score == 1">
+    <p>Bad</p>
+</div>
+  
+  <div ng-if="re.score == 2">
+    <p>Weak</p>
+  </div>
+  
+    <div ng-if="re.score == 3">
+    <p>Good</p>
+</div>
+  
+  <div ng-if="re.score == 4">
+    <p>Strong</p>
+</div>
+    
+<!--     feedback -->
+  <div ng-if="re.feedback.warning.length > 0">
+    <h2>Feedback </h2>
+     <p> <span class="bg-warning">{{re.feedback.warning}}</span></p>
+  </div>
+    
+<!--     suggestions -->
+  <div ng-if="re.feedback.suggestions.length > 0">
+    <h2>Suggestions</h2>
+      <dl>
+        <li ng-repeat="fb in re.feedback.suggestions">{{fb}}</li>
+      </dl>
+  </div>
+<!--     Crack Time -->
+    <h2>Estimated Time to Crack</h2>
+  <p>
+      <span ng-if="re.time">
+        100/hr: {{re.time.online_throttling_100_per_hour}}<br>
+        10/sec: {{re.time.online_no_throttling_10_per_second}} <br>
+        1E4/sec: {{re.time.offline_slow_hashing_1e4_per_second}} <br>
+        1E10/sec: {{re.time.offline_fast_hashing_1e10_per_second}}
+      </span>
+    </p>
         <h1>About</h1>
         <p>Unlike every other password strength checker, this password strength checker uses AI and gathered data to determine the real strength of your password</p>
+          </div>
       </main>
     </section>
+      
+<!--Password Generator-->
     
     <section id="generatorPanel">
       <main>
@@ -94,5 +151,11 @@
     </section>
   </div>
 </article>
+        
+<!--Js-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/zxcvbn/4.3.0/zxcvbn.js"></script>
+    
     </body>
 </html>
