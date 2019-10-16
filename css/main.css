@@ -8,9 +8,6 @@
     background-size:400% 400%;
     animation:gradientBG 15s ease infinite
 }
-header{
-    background-color:transparent
-}
 @keyframes gradientBG{
     0%{
         background-position:0 50%
@@ -463,4 +460,40 @@ main p{
 
 #aboutPanel{
   text-align:center;
+}
+
+red {
+   color : red;
+  }
+
+/* Password field */
+ #password + .glyphicon {
+   cursor: pointer;
+   pointer-events: all;
+ }
+
+ #inPut + .glyphicon {
+   cursor: pointer;
+   pointer-events: all;
+ }
+
+/* Styles for CodePen Demo Only */
+#wrapper {
+  max-width:220px;
+  margin: auto;
+}
+
+/* text styling */
+safe{
+  @import url('https://fonts.googleapis.com/css?family=Rock+Salt&display=swap');
+  color:#00ff00;
+  font-size :35px;
+  font-family: 'Rock Salt', cursive;
+  font-weight:900;
+}
+
+comp{
+  color:red;
+  font-size: 30px;
+  font-family: 'Press Start 2P', cursive;
 }

@@ -4,7 +4,14 @@
 <head>
 <!--CSS-->
     <link id='stylecss' type="text/css" rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    
+      
+<!--   fonts -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Rock+Salt&display=swap" rel="stylesheet">
+    
     
 </head>
     <body>
@@ -66,8 +73,21 @@
 <!--     Password Leaked -->
     <section id="breachPanel">
       <main>
+        
         <h1>Have You Been Hacked?</h1>
         <p>This Checks if your password has been captured in any data breaches throughout the history of the internet to determine if your password is secure</p>
+        <h1>Password Check</h1>
+        
+        <div id="wrapper">
+  <div class="form-group has-feedback">
+    <input type="password" class="form-control" id="inPut" placeholder="Password">
+    <i class="glyphicon glyphicon-eye-open form-control-feedback"></i>
+  </div>
+</div>
+        
+<button OnClick=runCheck()>Check</button>
+
+  <p id="outPut"></p>
       </main>
     </section>
     
@@ -78,11 +98,19 @@
   
   <h1 class="header">Enter Password</h1>
   <br>
-  
-  <input type="password" ng-change="checkPd()" ng-model="pwd" /> <button ng-click="clr()">Clear</button>
+          <div id="wrapper">
+  <div class="form-group has-feedback">
+    
+    <input type="password" class="form-control" id="password" placeholder="Password"  ng-change="checkPd()" ng-model="pwd">
+    <i class="glyphicon glyphicon-eye-open form-control-feedback"></i>
+    
+  </div>
+</div>
+          <button ng-click="clr()">Clear</button>
     
 <!--     Score -->
-    <h2>Score: {{re.score}}</h2>
+            <div ng-if="re.score != null">
+    <h1>Score: {{re.score}}</h1>
   
   <div ng-if="re.score == 0">
     <p>Worst</p>
@@ -103,22 +131,24 @@
   <div ng-if="re.score == 4">
     <p>Strong</p>
 </div>
+            </div>
     
 <!--     feedback -->
   <div ng-if="re.feedback.warning.length > 0">
-    <h2>Feedback </h2>
+    <h1>Feedback </h1>
      <p> <span class="bg-warning">{{re.feedback.warning}}</span></p>
   </div>
     
 <!--     suggestions -->
   <div ng-if="re.feedback.suggestions.length > 0">
-    <h2>Suggestions</h2>
+    <h1>Suggestions</h1>
       <dl>
         <li ng-repeat="fb in re.feedback.suggestions">{{fb}}</li>
       </dl>
   </div>
 <!--     Crack Time -->
-    <h2>Estimated Time to Crack</h2>
+            <div ng-if="re.time != null">
+    <h1>Estimated Time to Crack</h1>
   <p>
       <span ng-if="re.time">
         100/hr: {{re.time.online_throttling_100_per_hour}}<br>
@@ -127,8 +157,11 @@
         1E10/sec: {{re.time.offline_fast_hashing_1e10_per_second}}
       </span>
     </p>
+            </div>
         <h1>About</h1>
         <p>Unlike every other password strength checker, this password strength checker uses AI and gathered data to determine the real strength of your password</p>
+        
+
           </div>
       </main>
     </section>
@@ -145,8 +178,13 @@
 <!--About -->
     <section id="aboutPanel">
       <main>
-        <h1>About</h1>
-        <p>something something</p>   
+         <h1>About</h1>
+        <p>PasswordToolkit was developed as a part of an Assignment for Cloud Computing at RMIT</p>   
+        <h1>Technologies Used</h1>
+        <p>AWS for Hosting and Storage</p>
+        <p>AWS Cognito for Authentication</p>
+        <p>PWNED API for Checking for Password breaches</p>
+        <p>zxcvbn to check for Password Strength</p> 
       </main>
     </section>
   </div>
@@ -154,8 +192,10 @@
         
 <!--Js-->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
-    <script type="text/javascript" src="js/main.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/zxcvbn/4.3.0/zxcvbn.js"></script>
-    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hideshowpassword/2.0.8/hideShowPassword.min.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+        
     </body>
 </html>
