@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+<!--CSS-->
+    <link id='stylecss' type="text/css" rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+</head>
+    <body>
+<!-- TAB CONTROLLERS -->
+<input id="managePanel-ctrl"
+       class="panel-radios" type="radio" name="tab-radios" checked>
+<input id="breachPanel-ctrl"
+       class="panel-radios" type="radio" name="tab-radios">
+<input id="strengthPanel-ctrl"
+       class="panel-radios" type="radio" name="tab-radios">
+<input id="generatorPanel-ctrl"
+       class="panel-radios" type="radio" name="tab-radios">
+<input id="aboutPanel-ctrl"
+       class="panel-radios" type="radio" name="tab-radios">
+<input id="nav-ctrl"
+       class="panel-radios" type="checkbox" name="nav-checkbox">
+
+<header id="introduction">
+  <h1>PasswordManager</h1>
+</header>
+
+<!-- TABS LIST -->
+<ul id="tabs-list">
+    <!-- MENU TOGGLE -->
+    <label id="open-nav-label" for="nav-ctrl"></label>
+    <li id="li-for-managePanel">
+      <label class="panel-label"
+             for="managePanel-ctrl">Manage Passwords</label>
+    </li><!--INLINE-BLOCK FIX
+ --><li id="li-for-breachPanel">
+      <label class="panel-label"
+             for="breachPanel-ctrl">Password Breach</label>
+    </li><!--INLINE-BLOCK FIX
+ --><li id="li-for-strengthPanel">
+      <label class="panel-label"
+             for="strengthPanel-ctrl">AI Password Strength</label>
+    </li><!--INLINE-BLOCK FIX
+ --><li id="li-for-generatorPanel">
+      <label class="panel-label"
+             for="generatorPanel-ctrl">Password Generator</label>
+    </li><!--INLINE-BLOCK FIX
+ --><li id="li-for-aboutPanel" class="last">
+      <label class="panel-label"
+             for="aboutPanel-ctrl">About</label>
+    </li>
+    <label id="close-nav-label" for="nav-ctrl">Close</label>
+</ul>
+
+<!-- THE PANELS -->
+<article id="panels">
+  <div class="container">
+    <section id="managePanel">
+      <main>
+        <h1>Password Manager</h1>
+        <p>something something</p>
+      </main>
+    </section>
+    
+<!--     Password Leaked -->
+    <section id="breachPanel">
+      <main>
+        <h1>Have You Been Hacked?</h1>
+        <p>This Checks if your password has been captured in any data breaches throughout the history of the internet to determine if your password is secure</p>
+      </main>
+    </section>
+    
+<!--AI PW STRENGTH-->
+    <section id="strengthPanel">
+      <main>
+        <h1>About</h1>
+        <p>Unlike every other password strength checker, this password strength checker uses AI and gathered data to determine the real strength of your password</p>
+      </main>
+    </section>
+    
+    <section id="generatorPanel">
+      <main>
+        <h1>Generate Secure Password</h1>
+        <p>something something</p>
+      </main>
+    </section>
+    
+<!--About -->
+    <section id="aboutPanel">
+      <main>
+        <h1>About</h1>
+        <p>something something</p>   
+      </main>
+    </section>
+  </div>
+</article>
+    </body>
+</html>
