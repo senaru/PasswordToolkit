@@ -1,25 +1,31 @@
-<!DOCTYPE html>
-<html lang='en'>
-
-<head>
-    <title>PasswordToolKit</title>
-<!--Cognito Script-->
+<html>
+ <head>
+  <title>Live Add Edit Delete Datatables Records using PHP Ajax</title>
+     
+     <!--Cognito Script-->
     <script src="js/amazon-cognito-identity.min.js"></script>  
 	<script src="js/config.js"></script>
     
 <!--CSS-->
     <link id='stylecss' type="text/css" rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" />
     
       
 <!--   fonts -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Rock+Salt&display=swap" rel="stylesheet">
+     
+<!--JS     -->
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
+  
+ </head>
     
-    
-</head>
-    <body>
+        <body>
 <!-- TAB CONTROLLERS -->
 <input id="managePanel-ctrl"
        class="panel-radios" type="radio" name="tab-radios" checked>
@@ -81,7 +87,29 @@
     <section id="managePanel">
       <main>
         <h1>Password Manager</h1>
-        <p>something something</p>
+          <div class="container box">
+   <br />
+   <div class="table-responsive">
+   <br />
+    <div align="right">
+     <button type="button" name="add" id="add" class="btn btn-info">Add</button>
+    </div>
+    <br />
+    <div id="alert_message"></div>
+    <table id="user_data" class="table table-bordered table-striped">
+     <thead>
+      <tr>
+       <th>Website/App</th>
+       <th>Handle</th>
+       <th>Password</th>
+       <th></th>
+      </tr>
+     </thead>
+    </table>
+   </div>
+  </div>
+          
+          
       </main>
     </section>
     
@@ -318,12 +346,22 @@
     <section id="aboutPanel">
       <main>
          <h1>About</h1>
-        <p>PasswordToolkit was developed as a part of an Assignment for Cloud Computing at RMIT</p>   
+          <p>PasswordToolkit is a collection of tools associated with helping the users Create Passwords, Manage Passwords and Determine Security of Passwords</p>
+        <p>PasswordToolkit was developed as a part of an Assignment for Cloud Computing at RMIT University</p>   
         <h1>Technologies Used</h1>
         <p>AWS for Hosting and Storage</p>
         <p>AWS Cognito for Authentication</p>
         <p>PWNED API for Checking for Password breaches</p>
-        <p>zxcvbn to check for Password Strength</p> 
+        <p>zxcvbn to check for Password Strength</p>
+          
+        <h1>Programming Languages Used</h1>
+          <p>HTML</p>
+          <p>CSS</p>
+          <ul style="list-style-type:none;">
+              JavaScript
+              <li>Angular</li>
+              <li>JQuery</li>
+              </ul>
       </main>
     </section>
   </div>
@@ -332,9 +370,112 @@
 <!--Js-->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/zxcvbn/4.3.0/zxcvbn.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/hideshowpassword/2.0.8/hideShowPassword.min.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
+            
+<!--            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>-->
         
-    </body>
-</html>
+    
+
+<script type="text/javascript" language="javascript" >
+ $(document).ready(function(){
+  
+  fetch_data();
+
+  function fetch_data()
+  {
+   var dataTable = $('#user_data').DataTable({
+    "processing" : true,
+    "serverSide" : true,
+    "order" : [],
+    "ajax" : {
+     url:"fetch.php",
+     type:"POST"
+    }
+   });
+  }
+  
+  function update_data(id, column_name, value)
+  {
+   $.ajax({
+    url:"update.php",
+    method:"POST",
+    data:{id:id, column_name:column_name, value:value},
+    success:function(data)
+    {
+     $('#alert_message').html('<div class="alert alert-success">'+data+'</div>');
+     $('#user_data').DataTable().destroy();
+     fetch_data();
+    }
+   });
+   setInterval(function(){
+    $('#alert_message').html('');
+   }, 5000);
+  }
+
+  $(document).on('blur', '.update', function(){
+   var id = $(this).data("id");
+   var column_name = $(this).data("column");
+   var value = $(this).text();
+   update_data(id, column_name, value);
+  });
+  
+  $('#add').click(function(){
+   var html = '<tr>';
+   html += '<td contenteditable id="data1"></td>';
+   html += '<td contenteditable id="data2"></td>';
+   html += '<td contenteditable id="data3"></td>';
+   html += '<td><button type="button" name="insert" id="insert" class="btn btn-success btn-xs">Insert</button></td>';
+   html += '</tr>';
+   $('#user_data tbody').prepend(html);
+  });
+  
+  $(document).on('click', '#insert', function(){
+   var first_name = $('#data1').text();
+   var last_name = $('#data2').text();
+   var password = $('#data3').text();
+   if(first_name != '' && last_name != '' && password != '')
+   {
+    $.ajax({
+     url:"insert.php",
+     method:"POST",
+     data:{first_name:first_name, last_name:last_name, password:password},
+     success:function(data)
+     {
+      $('#alert_message').html('<div class="alert alert-success">'+data+'</div>');
+      $('#user_data').DataTable().destroy();
+      fetch_data();
+     }
+    });
+    setInterval(function(){
+     $('#alert_message').html('');
+    }, 5000);
+   }
+   else
+   {
+    alert("Both Fields is required");
+   }
+  });
+  
+  $(document).on('click', '.delete', function(){
+   var id = $(this).attr("id");
+   if(confirm("Are you sure you want to remove this?"))
+   {
+    $.ajax({
+     url:"delete.php",
+     method:"POST",
+     data:{id:id},
+     success:function(data){
+      $('#alert_message').html('<div class="alert alert-success">'+data+'</div>');
+      $('#user_data').DataTable().destroy();
+      fetch_data();
+     }
+    });
+    setInterval(function(){
+     $('#alert_message').html('');
+    }, 5000);
+   }
+  });
+ });
+</script>
