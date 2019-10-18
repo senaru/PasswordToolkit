@@ -1,170 +1,173 @@
-/* Active Gradient Background */
-body {
-	margin: 0;
-	width: 100%;
-	height: 100vh;
-	font-family: "Exo", sans-serif;
-	color: #000;
-	background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-	background-size: 400% 400%;
-	animation: gradientBG 15s ease infinite;
-}
-
-@keyframes gradientBG {
-	0% {
-		background-position: 0% 50%;
-	}
-	50% {
-		background-position: 100% 50%;
-	}
-	100% {
-		background-position: 0% 50%;
-	}
-}
-
-.container {
-	width: 100%;
-	position: absolute;
-	top: 35%;
-	text-align: center;
-}
-
-h1 {
-	font-weight: 300;
-}
-
-h2{
-  font-size:10rem !important;
-}
-
-h5 {
-	color:#eee;
-	font-weight:300;
-}
-
-a,
-a:hover {
-	text-decoration: none;
-	color: #ddd;
-}
-
-/* White Form */
-form {
-  text-align:center;
-	width: 380px;
-	margin: 4em auto;
-	padding: 3em 2em 2em 2em;
-	background: #fafafa;
-	border: 1px solid #ebebeb;
-	box-shadow: rgba(0,0,0,0.14902) 0px 1px 1px 0px,rgba(0,0,0,0.09804) 0px 1px 2px 0px;
-}
-
-/* Input field with gradient border */
-
-input{
-  text-align:center;
-}
-
-.input {
-	 position: relative;
-	 font-size: 1.5em;
-	 background: linear-gradient(21deg, #10abff, #1beabd);
-  margin:.2rem;
-	 padding: 3px;
-	 display: inline-block;
-	 border-radius: 9999em;
-}
- .input *:not(span) {
-	 position: relative;
-	 display: inherit;
-	 border-radius: inherit;
-	 margin: 0;
-	 border: none;
-	 outline: none;
-	 padding: 0 0.325em;
-	 z-index: 1;
-}
- .input *:not(span):focus + span {
-	 opacity: 1;
-	 transform: scale(1);
-}
- .input span {
-	 transform: scale(0.993, 0.94);
-	 transition: transform 0.5s, opacity 0.25s;
-	 opacity: 0;
-	 position: absolute;
-	 z-index: 0;
-	 margin: 4px;
-	 left: 0;
-	 top: 0;
-	 right: 0;
-	 bottom: 0;
-	 border-radius: inherit;
-	 pointer-events: none;
-	 box-shadow: inset 0 0 0 3px #fff, 0 0 0 4px #fff, 3px -3px 30px #1beabd, -3px 3px 30px #10abff;
-}
-
-/* Buttons with gradient Border */
-button.button {
-  border-radius: 100rem;
-  margin:.3rem;
-  padding: 1rem;
-  font-family: 'Avenir Next';
-  font-size: 1rem;
-  padding: .5rem 3rem;
-  color: $color-black;
-  box-shadow: 0 0 6px 0 rgba(157, 96, 212, 0.5);
-  border: solid 3px transparent;
-  background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), linear-gradient(101deg, #78e4ff, #ff48fa);
-  background-origin: border-box;
-  background-clip: content-box, border-box;
-  box-shadow: 2px 1000px 1px #fff inset;
-}
-
-button.button:hover {
-  box-shadow: none;
-  color: white;
-}
-/* Gradient Text */
-*{margin:0;padding:0;}
-.gradient{
-  background: linear-gradient(to right, blue,pink,purple,springgreen,crimson);
-  background-size: 200% 200%;
-  animation: rainbow 2s ease-in-out infinite;
-  background-clip: text;
-  -webkit-background-clip:text;
-  color:grey;
-  transition: color .2s ease-in-out;
-}
-.gradient:hover{
-  color:rgba(0,0,0,0);
-}
-@keyframes rainbow { 
-  0%{background-position:left}
-  50%{background-position:right}
-  100%{background-position:left}
-}
-
-/* Gradient header */
-.header {
-	 font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-	 font-size: 2.5rem;
-	 font-weight: 300;
-  margin:0 0 6rem 0;
-	 letter-spacing: 2px;
-	 text-align: center;
-	 color: #f35626;
-	 background-image: -webkit-linear-gradient(92deg, #f35626, #feab3a);
-	 -webkit-background-clip: text;
-	 -webkit-text-fill-color: transparent;
-	 -webkit-animation: hue 10s infinite linear;
-}
- @-webkit-keyframes hue {
-	 from {
-		 -webkit-filter: hue-rotate(0deg);
-	}
-	 to {
-		 -webkit-filter: hue-rotate(-360deg);
-	}
-}
+/* Active Gradient Background */
+body {
+	margin: 0;
+	width: 100%;
+	height: 100vh;
+	font-family: "Exo", sans-serif;
+	color: #000;
+	background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+	background-size: 400% 400%;
+	animation: gradientBG 15s ease infinite;
+}
+
+@keyframes gradientBG {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+.container {
+	width: 100%;
+	position: absolute;
+	top: 35%;
+	text-align: center;
+}
+
+h1 {
+	font-weight: 300;
+    color:#3fc0e0;
+}
+
+h2{
+  font-size:10rem !important;
+}
+
+red {
+	color:#dc143c;
+}
+green {
+	color:#00C9A7;
+}
+
+a,
+a:hover {
+	text-decoration: none;
+	color: #ddd;
+}
+
+/* White Form */
+form {
+  text-align:center;
+	width: 380px;
+	margin: 4em auto;
+	padding: 3em 2em 2em 2em;
+	background: #fafafa;
+	border: 1px solid #ebebeb;
+	box-shadow: rgba(0,0,0,0.14902) 0px 1px 1px 0px,rgba(0,0,0,0.09804) 0px 1px 2px 0px;
+}
+
+/* Input field with gradient border */
+
+input{
+  text-align:center;
+}
+
+.input {
+	 position: relative;
+	 font-size: 1.5em;
+	 background: linear-gradient(21deg, #10abff, #1beabd);
+  margin:.2rem;
+	 padding: 3px;
+	 display: inline-block;
+	 border-radius: 9999em;
+}
+ .input *:not(span) {
+	 position: relative;
+	 display: inherit;
+	 border-radius: inherit;
+	 margin: 0;
+	 border: none;
+	 outline: none;
+	 padding: 0 0.325em;
+	 z-index: 1;
+}
+ .input *:not(span):focus + span {
+	 opacity: 1;
+	 transform: scale(1);
+}
+ .input span {
+	 transform: scale(0.993, 0.94);
+	 transition: transform 0.5s, opacity 0.25s;
+	 opacity: 0;
+	 position: absolute;
+	 z-index: 0;
+	 margin: 4px;
+	 left: 0;
+	 top: 0;
+	 right: 0;
+	 bottom: 0;
+	 border-radius: inherit;
+	 pointer-events: none;
+	 box-shadow: inset 0 0 0 3px #fff, 0 0 0 4px #fff, 3px -3px 30px #1beabd, -3px 3px 30px #10abff;
+}
+
+/* Buttons with gradient Border */
+button.button {
+  border-radius: 100rem;
+  margin:.3rem;
+  padding: 1rem;
+  font-family: 'Avenir Next';
+  font-size: 1rem;
+  padding: .5rem 3rem;
+  color: $color-black;
+  box-shadow: 0 0 6px 0 rgba(157, 96, 212, 0.5);
+  border: solid 3px transparent;
+  background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), linear-gradient(101deg, #78e4ff, #ff48fa);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+  box-shadow: 2px 1000px 1px #fff inset;
+}
+
+button.button:hover {
+  box-shadow: none;
+  color: white;
+}
+/* Gradient Text */
+*{margin:0;padding:0;}
+.gradient{
+  background: linear-gradient(to right, blue,pink,purple,springgreen,crimson);
+  background-size: 200% 200%;
+  animation: rainbow 2s ease-in-out infinite;
+  background-clip: text;
+  -webkit-background-clip:text;
+  color:grey;
+  transition: color .2s ease-in-out;
+}
+.gradient:hover{
+  color:rgba(0,0,0,0);
+}
+@keyframes rainbow { 
+  0%{background-position:left}
+  50%{background-position:right}
+  100%{background-position:left}
+}
+
+/* Gradient header */
+.header {
+	 font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+	 font-size: 2.5rem;
+	 font-weight: 300;
+  margin:0 0 6rem 0;
+	 letter-spacing: 2px;
+	 text-align: center;
+	 color: #f35626;
+	 background-image: -webkit-linear-gradient(92deg, #f35626, #feab3a);
+	 -webkit-background-clip: text;
+	 -webkit-text-fill-color: transparent;
+	 -webkit-animation: hue 10s infinite linear;
+}
+ @-webkit-keyframes hue {
+	 from {
+		 -webkit-filter: hue-rotate(0deg);
+	}
+	 to {
+		 -webkit-filter: hue-rotate(-360deg);
+	}
+}
  

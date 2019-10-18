@@ -12,20 +12,21 @@
   <script src="js/config.js"></script>
       
       <!--css -->
-     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous"/>
      <link id='stylecss' type="text/css" rel="stylesheet" href="css/loginregister.css"/>
      <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css" />
+     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous"/>
       
   </head>
 
 	
   <body>
-      <form>
+      <form id="the-form">
       <h1 class="header">PasswordToolKit</h1>
-      <h2 class="fab fa-keycdn"></h2>
+      <h2 class="fab fa-keycdn header"></h2>
       <br>
 
-    <h1 class="h3 mb-3 font-weight-normal" id="titleheader">Register an Account</h1>
+    <h1 id="header">Register an Account</h1>
+          <h2 ><green id="return"></green></h2>
 	<span class="input">
 	<input type="personalname" class="form-control" id="personalnameRegister" placeholder="Name" pattern=".*" required>
         </span>
@@ -40,13 +41,24 @@
                 <span class="input">
     <input type="password" class="form-control" id="confirmationpassword" placeholder="Confirm Password" pattern=".*" required>
                 </span>
-	<button id="reg" class="button" type="button" onclick="registerButton()" >Register</button>
+	<button id="reg" class="button" type="button" onclick="reportValidity()" >Register</button>
           
           <p>Already a User?</p>
         <a id="login" class="gradient" onclick="loginLink()">LogIn</a>
 
       </form>
+      
 	<script>
+        //Form Validation
+    $("#reg").on("click", function(){
+    if($("#the-form")[0].checkValidity()) {
+        registerButton();
+    }
+    else {
+        $("#the-form")[0].reportValidity();
+    }
+});
+
 
 		var username;
 		var password;
@@ -71,8 +83,8 @@
 		}
 		
 		poolData = {
-				UserPoolId : _config.cognito.userPoolId, // Your user pool id here
-				ClientId : _config.cognito.clientId // Your client id here
+				UserPoolId : _config.cognito.userPoolId,
+				ClientId : _config.cognito.clientId
 			};		
 		var userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
 
@@ -80,12 +92,12 @@
 		
 		var dataEmail = {
 			Name : 'email', 
-			Value : username, //get from form field
+			Value : username,
 		};
 		
 		var dataPersonalName = {
 			Name : 'name', 
-			Value : personalname, //get from form field
+			Value : personalname,
 		};
 
 		var attributeEmail = new AmazonCognitoIdentity.CognitoUserAttribute(dataEmail);
@@ -103,8 +115,9 @@
 			cognitoUser = result.user;
 			console.log('user name is ' + cognitoUser.getUsername());
 			//change elements of page
-			document.getElementById("titleheader").innerHTML = "Check your email for a verification link";
-			window.location.href = "login.php";
+			document.getElementById("return").innerHTML = "Check your email for a verification link";
+            setTimeout("location.href = 'login.php';",3000);
+			//window.location.href = "login.php";
 		});
 	  }
 

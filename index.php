@@ -1,6 +1,6 @@
 <html>
  <head>
-  <title>Live Add Edit Delete Datatables Records using PHP Ajax</title>
+  <title>PasswordToolKit</title>
      
      <!--Cognito Script-->
     <script src="js/amazon-cognito-identity.min.js"></script>  
@@ -349,19 +349,18 @@
           <p>PasswordToolkit is a collection of tools associated with helping the users Create Passwords, Manage Passwords and Determine Security of Passwords</p>
         <p>PasswordToolkit was developed as a part of an Assignment for Cloud Computing at RMIT University</p>   
         <h1>Technologies Used</h1>
-        <p>AWS for Hosting and Storage</p>
+          <p><s>AWS</s> 000webhost for Hosting and Storage</p>
         <p>AWS Cognito for Authentication</p>
+        <p>RemoteMySQL for PasswordManager Database</p>
         <p>PWNED API for Checking for Password breaches</p>
         <p>zxcvbn to check for Password Strength</p>
           
         <h1>Programming Languages Used</h1>
           <p>HTML</p>
           <p>CSS</p>
-          <ul style="list-style-type:none;">
-              JavaScript
-              <li>Angular</li>
-              <li>JQuery</li>
-              </ul>
+          <p>Javascript - Angular + JQuery</p>
+          <p>PHP</p>
+          <p>MySQL</p>
       </main>
     </section>
   </div>
@@ -375,8 +374,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/hideshowpassword/2.0.8/hideShowPassword.min.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
         
-    
-
 <script type="text/javascript" language="javascript" >
     var auth = null;
     
@@ -392,7 +389,6 @@ var data = {
         
         if (cognitoUser == null) {
             console.log("error User not logged in")
-//            alert ("Please Login");
             window.location.href = "login.php";
             
         }
@@ -412,23 +408,8 @@ var data = {
 				}
 				console.log(result);
                 auth = result[0].getValue();
-//                var newauth = auth.replace(/-/g, "");
 				document.getElementById("email_value").innerHTML = result[2].getValue();
                 
-                //Save Unique UserID to file
-//                 test();
-        
-//   function test(){    
-//        $.ajax({
-//            url: 'write.php', 
-//            type: "POST",
-//            data: ({name: newauth}),
-//            success: function(data){
-//                console.log(data);
-//            }
-//        });     
-// 
-//   }
 			});			
 			
         });
@@ -443,7 +424,6 @@ var data = {
 
  $(document).ready(function(){
      
-       
   fetch_data();
 
   function fetch_data()

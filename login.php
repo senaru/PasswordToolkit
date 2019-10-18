@@ -13,19 +13,19 @@
 	<script src="js/config.js"></script>
       
       <!--css -->
-     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous"/>
      <link id='stylecss' type="text/css" rel="stylesheet" href="css/loginregister.css"/>
      <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous"/>
 
   </head>
   <body>
-    <form>
-      <h1 class="header">PasswordToolKit</h1>
-      <h2 class="fab fa-keycdn"></h2>
+    <form id="the-form">
+      <h1 class="header">PasswordToolKit
+      <h2 class="fab fa-keycdn header"></h2></h1>
       <br>
-      
-<span class="input">
-      <input type="text" id="inputUsername"  placeholder="Email" name="username" required autofocus>
+      <h1>Login</h1>
+        <span class="input">
+      <input type="email" id="inputUsername"  placeholder="Email" name="username" required autofocus>
       </span>
       
       <span class="input">
@@ -33,8 +33,9 @@
       </span>
       <br>
       <br>
-        <button type="button" class="button"
-                onclick="signInButton()">Sign in</button>
+        <h3><red id="return"></red></h3>
+        <button id = "btn" type="button" class="button"
+                onclick="reportValidity()">Sign in</button>
       <br>
         
 	  <a class="gradient" onclick="forgotpasswordbutton()">Forgot Password</a>
@@ -46,6 +47,16 @@
 
 
 <script>
+    
+    //Form Validation
+    $("#btn").on("click", function(){
+    if($("#the-form")[0].checkValidity()) {
+        signInButton();
+    }
+    else {
+        $("#the-form")[0].reportValidity();
+    }
+});
 
   function signInButton() {
     
@@ -57,8 +68,8 @@
     var authenticationDetails = new AmazonCognitoIdentity.AuthenticationDetails(authenticationData);
     
 	var poolData = {
-        UserPoolId : _config.cognito.userPoolId, // Your user pool id here
-        ClientId : _config.cognito.clientId, // Your client id here
+        UserPoolId : _config.cognito.userPoolId,
+        ClientId : _config.cognito.clientId,
     };
 	
     var userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
@@ -103,7 +114,7 @@
         },
 
         onFailure: function(err) {
-            alert(err.message || JSON.stringify(err));
+            document.getElementById("return").innerHTML = err.message || JSON.stringify(err);
         },
     });
   }
@@ -114,8 +125,8 @@
   
   function forgotpasswordbutton() {
 	var poolData = {
-        UserPoolId : _config.cognito.userPoolId, // Your user pool id here
-        ClientId : _config.cognito.clientId, // Your client id here
+        UserPoolId : _config.cognito.userPoolId,
+        ClientId : _config.cognito.clientId,
     };
 	
     var userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
@@ -132,7 +143,12 @@
             console.log('call result: ' + result);
         },
         onFailure: function(err) {
-            alert(err);
+            document.getElementById("return").innerHTML = err.message || JSON.stringify(err);
+            if( (err.message || JSON.stringify(err) )=="Username/client id combination not found."){
+               document.getElementById("return").innerHTML = "User does not Exist!"
+               }else{
+        document.getElementById("return").innerHTML = "Please Enter Email"
+    }
 			console.log(err);
         },
         inputVerificationCode() {
