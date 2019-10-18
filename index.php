@@ -85,9 +85,9 @@
 <article id="panels">
   <div class="container">
     <section id="managePanel">
-      <main>
+      <main id="mgr">
         <h1>Password Manager</h1>
-          <div class="container box">
+          <div class="passwordmanager">
    <br />
    <div class="table-responsive">
    <br />
