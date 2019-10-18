@@ -368,23 +368,87 @@
 </article>
         
 <!--Js-->
+            
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/zxcvbn/4.3.0/zxcvbn.js"></script>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/hideshowpassword/2.0.8/hideShowPassword.min.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
-            
-<!--            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>-->
         
     
 
 <script type="text/javascript" language="javascript" >
+    var auth = null;
+    
+    //Cognito for Authentication
+var data = { 
+		UserPoolId : _config.cognito.userPoolId,
+        ClientId : _config.cognito.clientId
+    };
+    var userPool = new AmazonCognitoIdentity.CognitoUserPool(data);
+    var cognitoUser = userPool.getCurrentUser();
+	
+	$(document).ready(function(){
+        
+        if (cognitoUser == null) {
+            console.log("error User not logged in")
+//            alert ("Please Login");
+            window.location.href = "login.php";
+            
+        }
+    if (cognitoUser != null) {
+        cognitoUser.getSession(function(err, session) {
+            if (err) {
+                alert(err);
+                console.log(err);
+                return;
+            }
+            console.log('session validity: ' + session.isValid());
+			//Set the profile info
+			cognitoUser.getUserAttributes(function(err, result) {
+				if (err) {
+					console.log(err);
+					return;
+				}
+				console.log(result);
+                auth = result[0].getValue();
+//                var newauth = auth.replace(/-/g, "");
+				document.getElementById("email_value").innerHTML = result[2].getValue();
+                
+                //Save Unique UserID to file
+//                 test();
+        
+//   function test(){    
+//        $.ajax({
+//            url: 'write.php', 
+//            type: "POST",
+//            data: ({name: newauth}),
+//            success: function(data){
+//                console.log(data);
+//            }
+//        });     
+// 
+//   }
+			});			
+			
+        });
+    }
+});
+	function signOut(){
+	    if (cognitoUser != null) {
+          cognitoUser.signOut();
+          window.location.href = "login.php";
+        }
+	}
+
  $(document).ready(function(){
-  
+     
+       
   fetch_data();
 
   function fetch_data()
   {
+      
    var dataTable = $('#user_data').DataTable({
     "processing" : true,
     "serverSide" : true,

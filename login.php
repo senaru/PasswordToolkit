@@ -73,8 +73,33 @@
 	cognitoUser.authenticateUser(authenticationDetails, {
         onSuccess: function (result) {
 			var accessToken = result.getAccessToken().getJwtToken();
-			console.log(accessToken);	
-			window.location.href = "file:main.html";
+			console.log(accessToken);
+            
+            cognitoUser.getUserAttributes(function(err, result) {
+				if (err) {
+					console.log(err);
+					return;
+				}
+				console.log(result);
+                auth = result[0].getValue();
+                var newauth = auth.replace(/-/g, "");
+                //Save Unique UserID to file
+                 test();
+        
+   function test(){    
+        $.ajax({
+            url: 'write.php', 
+            type: "POST",
+            data: ({auth: newauth}),
+            success: function(data){
+                console.log(data);
+            }
+        });     
+ 
+   }
+			});	
+            
+			window.location.href = "index.php";
         },
 
         onFailure: function(err) {
@@ -84,7 +109,7 @@
   }
     
     function registerLink() {
-        window.open("file:register.html")
+        window.open("register.php")
     }
   
   function forgotpasswordbutton() {

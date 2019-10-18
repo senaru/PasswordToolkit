@@ -1,9 +1,11 @@
 <?php
 //fetch.php
+$user = file_get_contents("user.txt");
+
 $connect = mysqli_connect("remotemysql.com:3306", "A94GJGzFph", "zMgmuGyp7J", "A94GJGzFph");
 $columns = array('first_name', 'last_name', 'password');
 
-$query = "SELECT * FROM user ";
+$query = "SELECT * FROM $user";
 
 if(isset($_POST["search"]["value"]))
 {
@@ -47,16 +49,16 @@ while($row = mysqli_fetch_array($result))
  $data[] = $sub_array;
 }
 
-function get_all_data($connect)
+function get_all_data($connect, $user)
 {
- $query = "SELECT * FROM user";
+ $query = "SELECT * FROM $user";
  $result = mysqli_query($connect, $query);
  return mysqli_num_rows($result);
 }
 
 $output = array(
  "draw"    => intval($_POST["draw"]),
- "recordsTotal"  =>  get_all_data($connect),
+ "recordsTotal"  =>  get_all_data($connect, $user),
  "recordsFiltered" => $number_filter_row,
  "data"    => $data
 );
