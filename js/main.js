@@ -34,6 +34,8 @@ angular.module('tester', [])
   });
 angular.bootstrap(document, ['tester']);
 
+//"dropbox/zxcvbn", GitHub, 2017. [Online]. Available: https://github.com/dropbox/zxcvbn. [Accessed: 20- Oct- 2019].
+
 //End Password Strength
 
 //Start Password check
